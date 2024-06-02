@@ -1,5 +1,6 @@
-// NavBar
+// Next
 import Link from "next/link";
+// Icons
 import {
   Home,
   LineChart,
@@ -10,6 +11,7 @@ import {
   Users2,
 } from "lucide-react"
 
+// UI
 import {
   Tooltip,
   TooltipContent,

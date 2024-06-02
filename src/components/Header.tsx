@@ -1,6 +1,9 @@
+// Next
 import Image from "next/image";
 import Link from "next/link";
+// Components
 import { ModeToggle } from "./mode-toggle";
+// Icons
 import {
   CircleUser,
   Home,
@@ -12,7 +15,7 @@ import {
   ShoppingCart,
   Users2,
 } from "lucide-react"
-
+// UI
 import {
   Breadcrumb,
   BreadcrumbItem,
