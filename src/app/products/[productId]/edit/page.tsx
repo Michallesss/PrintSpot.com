@@ -41,7 +41,7 @@ import {
   ToggleGroupItem,
 } from "@/components/ui/toggle-group"
 
-export default function Dashboard() {
+export default function ProductEdit() {
   return (
     <div className="flex min-h-screen w-full flex-col bg-muted/40">
       <NavBar />
