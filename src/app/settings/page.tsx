@@ -15,7 +15,7 @@ import {
 import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
 
-export default function Dashboard() {
+export default function Settings() {
   return (
     <div className="flex min-h-screen w-full flex-col bg-muted/40">
       <NavBar />

@@ -1,9 +1,11 @@
 "use client"
-
+// React
 import * as React from "react"
+// Icons
 import { Moon, Sun } from "lucide-react"
+// Libraries
 import { useTheme } from "next-themes"
-
+// UI
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
