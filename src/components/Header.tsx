@@ -2,6 +2,7 @@
 // Next
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from 'next/navigation'
 // Components
 import { ModeToggle } from "./mode-toggle";
 import { MobileNavBar } from "./NavBar";
@@ -29,6 +30,8 @@ import {
 import { Input } from "@/components/ui/input"
 
 export default function Header() {
+  const pathes = usePathname().split('/').filter( path => path );
+
   return (
     <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-background px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6">
       {/* Mobile Sidebar */}
@@ -38,19 +41,20 @@ export default function Header() {
         <BreadcrumbList>
           <BreadcrumbItem>
             <BreadcrumbLink asChild>
-              <Link href="#">Dashboard</Link>
+              <Link href="/">PrintSpot</Link>
             </BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbLink asChild>
-              <Link href="#">Orders</Link>
-            </BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbPage>Recent Orders</BreadcrumbPage>
-          </BreadcrumbItem>
+          {pathes.map((path, index) => (
+            <>
+              <BreadcrumbItem key={index}>
+                <BreadcrumbLink asChild>
+                  <Link href={"/"+pathes.slice(0, index+1).join("/")}>{path}</Link>
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              {index !== pathes.length-1 ? <BreadcrumbSeparator /> : null}
+            </>
+          ))}
         </BreadcrumbList>
       </Breadcrumb>
       {/* SearchBar */}

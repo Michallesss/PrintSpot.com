@@ -32,7 +32,7 @@ export default function NavBar() {
           href="/"
           className={"group flex h-9 w-9 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:h-8 md:w-8 md:text-base"}
         >
-          <Package2 className="h-4 w-4 transition-all group-hover:scale-110" /> {/* Or printspot logo */}
+          <Package2 className="h-4 w-4 transition-all group-hover:scale-110" /> {/* // ? Or printspot logo */}
           <span className="sr-only">PrintSpot</span>
         </Link>
         <Option label="Dashboard" href="/dashboard">
@@ -67,8 +67,7 @@ interface OptionProps {
 }
 
 function Option({ children, label, href }: Readonly<OptionProps>) {
-  const pathname = usePathname().split("/")[1];
-  const hrefPath = href.split("/")[1];
+  const currentPath = usePathname();
 
   return (
     <TooltipProvider>
@@ -76,7 +75,7 @@ function Option({ children, label, href }: Readonly<OptionProps>) {
         <TooltipTrigger asChild>
           <Link
             href={href}
-            className={`flex h-9 w-9 items-center justify-center rounded-lg transition-colors hover:text-foreground md:h-8 md:w-8 ${pathname === hrefPath ? "bg-accent text-accent-foreground" : "text-muted-foreground"}`}
+            className={`flex h-9 w-9 items-center justify-center rounded-lg transition-colors hover:text-foreground md:h-8 md:w-8 ${currentPath.startsWith(href) ? "bg-accent text-accent-foreground" : "text-muted-foreground"}`}
           >
             {children}
             <span className="sr-only">{label}</span>
@@ -89,7 +88,7 @@ function Option({ children, label, href }: Readonly<OptionProps>) {
 }
 
 // Mobile NavBar
-export function MobileNavBar() {
+export function MobileNavBar() { // ?? Maybe return only login and register option if user isn't logged in (yes, only on mobile version, on desktop login option will be displayed on dashboard pages)
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -121,7 +120,6 @@ export function MobileNavBar() {
           </MobileOption>
           <MobileOption label="Settings" href="/settings">
             <LineChart className="h-5 w-5" />
-            Settings
           </MobileOption>
         </nav>
       </SheetContent>
@@ -135,14 +133,13 @@ interface MobileOptionProps {
   href: string;
 }
 
-function MobileOption({ children, label, href }: Readonly<MobileOptionProps>) { // TODO: Handling unloged user (maybe return null)
-  const pathname = usePathname().split("/")[1];
-  const hrefPath = href.split("/")[1];
+function MobileOption({ children, label, href }: Readonly<MobileOptionProps>) {
+  const currentPath = usePathname();
 
   return (
     <Link
       href={href}
-      className={`flex items-center gap-4 px-2.5 ${pathname !== hrefPath ? "text-muted-foreground hover:" : ""}text-foreground`}
+      className={`flex items-center gap-4 px-2.5 ${!currentPath.startsWith(href) ? "text-muted-foreground hover:" : ""}text-foreground`}
     >
       {children}
       {label}
