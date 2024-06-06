@@ -36,14 +36,14 @@ export default function Input({
               {linkText}
             </Link>
           </div>
-          <InputCn id={id} type={type} placeholder={placeholder} autoComplete={autoComplete} required={required} />
+          <InputCn name={id} type={type} placeholder={placeholder} autoComplete={autoComplete} required={required} />
         </div>
       )}
 
       {!link && (  
         <div className="grid gap-2">
           <Label htmlFor={id}>{label}</Label>
-          <InputCn id={id} type={type} placeholder={placeholder} autoComplete={autoComplete} required={required} />
+          <InputCn name={id} type={type} placeholder={placeholder} autoComplete={autoComplete} required={required} />
         </div>
       )}
     </>
