@@ -18,7 +18,11 @@ const config = {
 }
 
 export async function registerAction(prevState: any, formData: FormData) {
-  const validatedFields = registerSchema.safeParse({});
+  const validatedFields = registerSchema.safeParse({
+    username: formData.get("username"),
+    email: formData.get("email"),
+    password: formData.get("password"),
+  });
 
   if(!validatedFields.success) return {
     ...prevState,
@@ -48,7 +52,10 @@ export async function registerAction(prevState: any, formData: FormData) {
 }
 
 export async function loginAction(prevState: any, formData: FormData) {
-  const validatedFields = loginSchema.safeParse({});
+  const validatedFields = loginSchema.safeParse({
+    identifier: formData.get("identifier"),
+    password: formData.get("password"),
+  });
 
   if(!validatedFields.success) return {
     ...prevState,

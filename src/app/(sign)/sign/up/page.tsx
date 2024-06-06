@@ -3,9 +3,9 @@
 import { useFormState } from "react-dom"; // !!! REPLACE WITH REACT-HOOK-FORM
 import Form from "../../Form";
 import Input from "../../Input";
-import SubmitButton from "@/components/SubmitButton";
-import ZodErrors from "@/components/ZodErrors";
-import StrapiErrors from "@/components/StrapiErrors";
+import SubmitButton from "@/app/(sign)/SubmitButton";
+import ZodErrors from "@/app/(sign)/ZodErrors";
+import StrapiErrors from "@/app/(sign)/StrapiErrors";
 import { registerAction } from "@/actions/auth.actions";
 
 const INITIAL_STATE = {
@@ -19,11 +19,11 @@ export default function SignUp() {
   const [formState, formAction] = useFormState(registerAction, INITIAL_STATE);
 
   return (
-    <Form title="Sign Up" subTitle="Create account to start your journey" text="Already have an account?" link="/in" linkText="Sign In" action={formAction}>
+    <Form title="Sign Up" subTitle="Create account to start your journey" text="Already have an account?" link="in" linkText="Sign In" action={formAction}>
       <Input label="Username" placeholder="John Doe" id="username" type="text" autoComplete="username" required />
       <ZodErrors error={formState?.zodErrors?.username} />
 
-      <Input label="Email" placeholder="me@mail.com" id="email" type="email" autoComplete="email" required />\
+      <Input label="Email" placeholder="me@mail.com" id="email" type="email" autoComplete="email" required />
       <ZodErrors error={formState?.zodErrors?.email} />
 
       <Input label="Password" placeholder="********" id="password" type="password" autoComplete="new-password" required />
