@@ -4,10 +4,12 @@ import Link from "next/link";
 import { usePathname } from 'next/navigation'
 // Icons
 import {
-  Home,
+  Box,
+  Cpu,
+  // Home,
   LineChart,
   Package,
-  Package2,
+  // Package2,
   PanelLeft,
   Settings,
   ShoppingCart,
@@ -32,14 +34,15 @@ export default function NavBar() {
           href="/"
           className={"group flex h-9 w-9 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:h-8 md:w-8 md:text-base"}
         >
-          <Package2 className="h-4 w-4 transition-all group-hover:scale-110" /> {/* // ? Or printspot logo */}
+          <Box className="h-5 w-5 transition-all group-hover:scale-110" /> {/* // ? Or printspot logo */}
+          {/* <Home className="h-5 w-5" /> */}
           <span className="sr-only">PrintSpot</span>
         </Link>
-        <Option label="Dashboard" href="/dashboard">
-          <Home className="h-5 w-5" />
-        </Option>
         <Option label="Orders" href="/orders">
           <ShoppingCart className="h-5 w-5" />
+        </Option>
+        <Option label="Printers" href="/printers">
+          <Cpu className="h-5 w-5" />
         </Option>
         <Option label="Products" href="/products">
           <Package className="h-5 w-5" />
@@ -103,14 +106,15 @@ export function MobileNavBar() { // ?? Maybe return only login and register opti
             href="#"
             className="group flex h-10 w-10 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:text-base"
           >
-            <Package2 className="h-5 w-5 transition-all group-hover:scale-110" />
+            <Box className="h-5 w-5 transition-all group-hover:scale-110" />
+            {/* <Home className="h-5 w-5" /> */}
             <span className="sr-only">PrintSpot</span>
           </Link>
-          <MobileOption label="Dashboard" href="/dashboard">
-            <Home className="h-5 w-5" />
-          </MobileOption>
           <MobileOption label="Orders" href="/orders">
             <ShoppingCart className="h-5 w-5" />
+          </MobileOption>
+          <MobileOption label="Printers" href="/printers">
+            <Cpu className="h-5 w-5" />
           </MobileOption>
           <MobileOption label="products" href="/products">
             <Package className="h-5 w-5" />
@@ -118,10 +122,13 @@ export function MobileNavBar() { // ?? Maybe return only login and register opti
           <MobileOption label="Customers" href="/customers">
             <Users2 className="h-5 w-5" />
           </MobileOption>
-          <MobileOption label="Settings" href="/settings">
+          <MobileOption label="Analytics" href="/analytics">
             <LineChart className="h-5 w-5" />
+          </MobileOption> 
+          <MobileOption label="Settings" href="/settings">
+            <Settings className="h-5 w-5" />
           </MobileOption>
-        </nav>
+        </nav> 
       </SheetContent>
     </Sheet>
   )
