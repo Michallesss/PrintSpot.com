@@ -1,5 +1,5 @@
 // sign > in ? up
-'use server'
+'use client'
 import { redirect } from "next/navigation"
 
 export default function Sign() {
