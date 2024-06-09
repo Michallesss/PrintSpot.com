@@ -5,7 +5,7 @@ import { loginType, registerType } from '@/schemas/auth.schemas';
 
 export async function loginService(userData: loginType) {
   try {
-    const response = await instance.post('/auth/local/register', userData);
+    const response = await instance.post('/auth/local/register', userData); // ! Error here
 
     return response.data;
   } catch (error) {
@@ -16,7 +16,7 @@ export async function loginService(userData: loginType) {
 
 export async function registerService(userData: registerType) {
   try {
-    const response = await instance.post('/auth/local', userData);
+    const response = await instance.post('/auth/local/register', userData); // ! And here
 
     return response.data;
   } catch (error) {

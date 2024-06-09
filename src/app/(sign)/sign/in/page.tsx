@@ -19,7 +19,7 @@ export default function SignIn() {
   const [formState, formAction] = useFormState(loginAction, INITIAL_STATE);
 
   return (
-    <Form title="Sign In" subTitle="Enter your email below to login to your account" text="Don't have an account? " link="up" linkText="Sign Up" action={formAction}>
+    <Form title="Sign In" subTitle="Enter your email below to login to your account" text="Don't have an account? " link="/sign/up" linkText="Sign Up" action={formAction}>
       <Input label="Username or email" id="identifier" type="text" autoComplete="username" required />
       <ZodErrors error={formState?.zodErrors?.identifier} />
       
