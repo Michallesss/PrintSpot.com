@@ -1,13 +1,11 @@
-'use server'; // !!! REPLACE WITH REACT-HOOK-FORM
+'use server'; // TODO: REPLACE WITH REACT-HOOK-FORM
 // Next
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
-
+// Types
+import { loginSchema, loginType, registerSchema, registerType } from "@/schemas/auth.schemas";
 // Services
 import { loginService, registerService } from "@/services/auth.services";
-
-// Schemas
-import { loginSchema, registerSchema } from "@/schemas/auth.schemas";
 
 const config = {
   maxAge: 60 * 60 * 24 * 7, // 1 week
@@ -17,14 +15,10 @@ const config = {
   secure: process.env.NODE_ENV === "production",
 }
 
-export async function registerAction(prevState: any, formData: FormData) {
-  const validatedFields = registerSchema.safeParse({
-    username: formData.get("username"),
-    email: formData.get("email"),
-    password: formData.get("password"),
-  });
+export async function registerAction(prevState: any, data: registerType): Promise<any> {
+  const validatedFields = registerSchema.safeParse(data);
 
-  if(!validatedFields.success) return {
+  if (!validatedFields.success) return {
     ...prevState,
     zodErrors: validatedFields.error.flatten().fieldErrors,
     strapiErrors: null,
@@ -33,7 +27,7 @@ export async function registerAction(prevState: any, formData: FormData) {
 
   const responseData = await registerService(validatedFields.data);
 
-  if(!responseData) return {
+  if (!responseData) return {
     ...prevState,
     strapiErrors: null,
     zodErrors: null,
@@ -51,11 +45,8 @@ export async function registerAction(prevState: any, formData: FormData) {
   redirect("/");
 }
 
-export async function loginAction(prevState: any, formData: FormData) {
-  const validatedFields = loginSchema.safeParse({
-    identifier: formData.get("identifier"),
-    password: formData.get("password"),
-  });
+export async function loginAction(prevState: any, data: loginType): Promise<any> {
+  const validatedFields = loginSchema.safeParse(data);
 
   if(!validatedFields.success) return {
     ...prevState,
