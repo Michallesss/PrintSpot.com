@@ -29,8 +29,8 @@ import { loginAction } from "@/actions/auth.actions";
 
 export default function SignIn() {
   const [state, formAction] = useFormState(loginAction, {
-    ZodErrors: null,
-    StrapiErrors: null,
+    zodErrors: null,
+    strapiErrors: null,
     data: null,
   });
   const form = useForm<loginType>({

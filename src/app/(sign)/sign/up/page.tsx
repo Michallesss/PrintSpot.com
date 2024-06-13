@@ -27,8 +27,8 @@ import { registerAction } from "@/actions/auth.actions";
 
 export default function SignUp() { // TODO: Make it use shadCn and new components
   const [state, formAction] = useFormState(registerAction, {
-    ZodErrors: null,
-    StrapiErrors: null,
+    zodErrors: null,
+    strapiErrors: null,
     data: null,
   });
   const form = useForm<registerType>({
