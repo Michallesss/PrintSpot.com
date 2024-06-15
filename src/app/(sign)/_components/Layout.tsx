@@ -8,9 +8,9 @@ interface FormProps {
   children: React.ReactNode;
   title: string;
   subTitle: string;
-  text: string;
-  link: string;
-  linkText: string;
+  text?: string;
+  link?: string;
+  linkText?: string;
   action: any;
   onSubmit: any;
 }
@@ -34,12 +34,14 @@ export default function Form({ children, title, subTitle, text, link, linkText, 
             {children}
           </form>
 
-          <div className="mt-4 text-center text-sm">
-            {text}{" "}
-            <Link href={link} className="underline">
-              {linkText}
-            </Link>
-          </div>
+          {link && linkText && (
+            <div className="mt-4 text-center text-sm">
+              {text}{" "}
+              <Link href={link} className="underline">
+                {linkText}
+              </Link>
+            </div>
+          )}
         </div>
       </div>
       <div className="hidden bg-muted lg:block">
