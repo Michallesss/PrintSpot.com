@@ -29,15 +29,15 @@ export async function registerAction(prevState: any, data: registerType): Promis
 
   if (!responseData) return {
     ...prevState,
-    strapiErrors: null,
     zodErrors: null,
+    strapiErrors: null,
     message: "Ops! Something went wrong. Please try again.",
   };
 
   if (responseData.error) return {
     ...prevState,
-    strapiErrors: responseData.error,
     zodErrors: null,
+    strapiErrors: responseData.error,
     message: "Failed to Register.",
   };
 
@@ -66,13 +66,17 @@ export async function loginAction(prevState: any, data: loginType): Promise<any>
 
   if (responseData.error) return {
     ...prevState,
-    strapiErrors: responseData.error,
     zodErrors: null,
+    strapiErrors: responseData.error,
     message: "Failed to Login.",
   };
 
   cookies().set("jwt", responseData.jwt, config);
   redirect("/");
+}
+
+export async function forgotPasswordAction(prevState: any, data: any): Promise<any> {
+  // https://dev.to/peterlidee/forgot-password-flow-with-strapi-and-nextauth-59a9
 }
 
 export async function logoutAction() {
