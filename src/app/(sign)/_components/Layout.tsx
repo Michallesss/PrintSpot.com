@@ -2,6 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 // UI
+import { Form } from "@/components/ui/form";
 import { Button } from "@/components/ui/button"
 
 interface FormProps {
@@ -9,13 +10,14 @@ interface FormProps {
   title: string;
   subTitle: string;
   text?: string;
-  link?: string;
+  link?: string | URL;
   linkText?: string;
+  form: any;
   action: any;
   onSubmit: any;
 }
 
-export default function Form({ children, title, subTitle, text, link, linkText, action, onSubmit }: Readonly<FormProps>) {
+export default function Layout({ children, title, subTitle, text, link, linkText, form, action, onSubmit }: Readonly<FormProps>) {
   return (
     <div className="w-full lg:grid lg:min-h-[600px] lg:grid-cols-2 xl:min-h-[800px]">
       <Link href="/" className="absolute top-4 left-4">
@@ -30,9 +32,11 @@ export default function Form({ children, title, subTitle, text, link, linkText, 
             </p>
           </div>
           
-          <form action={action} onSubmit={onSubmit} className="grid gap-4">
-            {children}
-          </form>
+          <Form {...form}>
+            <form action={action} onSubmit={onSubmit} className="grid gap-4">
+              {children}
+            </form>
+          </Form>
 
           {link && linkText && (
             <div className="mt-4 text-center text-sm">
