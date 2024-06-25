@@ -75,9 +75,11 @@ export async function loginAction(prevState: any, data: loginType): Promise<any>
   redirect("/");
 }
 
-export async function forgotPasswordAction(prevState: any, data: any): Promise<any> {
-  // https://dev.to/peterlidee/forgot-password-flow-with-strapi-and-nextauth-59a9
-}
+// export async function forgotPasswordAction(prevState: any, data: any): Promise<any> {}
+
+// export async function checkForgotPasswordTokenAction(prevState: any, data: any): Promise<any> {}
+
+// export async function resetPasswordAction(prevState: any, data: any): Promise<any> {}
 
 export async function logoutAction() {
   cookies().set("jwt", "", { ...config, maxAge: 0 });
