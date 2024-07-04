@@ -37,3 +37,13 @@ export const registerSchema = z.object({
     .max(128, { message: "Password needs to be at most 128 characters long." }),
 });
 export type registerType = z.infer<typeof registerSchema>;
+
+// Forgot Password
+export const forgotPasswordSchema = z.object({
+  email: z
+    .string({ message: "Passed email not seems to be string." })
+    .trim()
+    .email({ message: "Please provide a valid email address." }) // * email is checking for valid email 
+    .max(345, { message: "Email address needs to be at most 345 characters long." }), // * email is checked for max length
+});
+export type forgotPasswordType = z.infer<typeof forgotPasswordSchema>;
