@@ -15,7 +15,7 @@ import {
 import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
 
-export default function Settings() {
+export default function Settings() { // TODO: Update settings pages
   return (
     <div className="flex min-h-screen w-full flex-col bg-muted/40">
       <NavBar />
@@ -29,7 +29,7 @@ export default function Settings() {
             <nav
               className="grid gap-4 text-sm text-muted-foreground" x-chunk="dashboard-04-chunk-0"
             >
-              <Link href="#" className="font-semibold text-primary">
+              <Link href="#" className="font-semibold text-primary"> {/* // TODO: handle showing current page */}
                 General
               </Link>
               <Link href="#">Security</Link>
